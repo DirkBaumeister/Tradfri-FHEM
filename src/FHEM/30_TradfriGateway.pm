@@ -40,7 +40,7 @@ sub TradfriGateway_Define($$) {
 	my @param = split('[ \t]+', $def);
 	
 	if(int(@param) < 4) {
-		return "too few parameters: define <name> TradfriGateway <gateway-ip> <gateway-secret>";
+		return "too few parameters: define <name> TradfriGateway <gateway-ip> <gateway-secret> <jtradfri-host:port>";
 	}
 
 	#close connection to socket, if open
@@ -51,8 +51,7 @@ sub TradfriGateway_Define($$) {
 	$hash->{gatewayAddress} = $param[2];
 	$hash->{gatewaySecret} = $param[3];
 
-	# @todo make user settable
-	$hash->{DeviceName} = "localhost:1505";
+	$hash->{DeviceName} = $param[4];
 
 	if(int(@param) > 4){
 		#there was a fifth parameter
