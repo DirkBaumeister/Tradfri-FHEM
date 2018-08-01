@@ -31,7 +31,7 @@ sub coapCommand{
 		return undef;
 	}
 
-	my $coapClientCMD = "timeout 5s coap-client -u Client_identity -k $gwSecret -v 1 -m $method coaps://$gwAddress:5684/$path";
+	my $coapClientCMD = "timeout 5s coap-client -u tradfri -k $gwSecret -v 1 -m $method coaps://$gwAddress:5684/$path";
 
 	if(%data){
 		my $jsonData = JSON->new->utf8->encode(\%data);
